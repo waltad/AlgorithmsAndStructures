@@ -20,6 +20,7 @@ from typing import List
 
 def likes(names: List[str]) -> str:
     num_of_names = len(names)
+    output = ""
     if num_of_names == 0:
         output = "nikt tego nie lubi :("
     elif num_of_names == 1:
