@@ -15,9 +15,18 @@ Wyjaśnienie: Czym jest anagram? Są to dwa wyrazy, które składają się z tyc
 'abba' & 'bbaa' == true
 Podpowiedź
 W zadaniu można wykorzystać Counter"""
-
+from collections import Counter
 from typing import List
 
 
 def anagrams(word: str, lst_of_words: List[str]) -> List[str]:
-    pass
+    anagram_lst = []
+    for x in lst_of_words:
+        if Counter(word) == Counter(x):
+            anagram_lst.append(x)
+    return anagram_lst
+
+
+if __name__ == '__main__':
+    lst_word = ['tama', 'tratata', 'atma', 'atam', 'mama', 'maat', 'taam', 'gol']
+    print(anagrams('mata', lst_word))
