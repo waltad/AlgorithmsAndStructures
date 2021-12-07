@@ -21,12 +21,20 @@ from typing import List
 
 def anagrams(word: str, lst_of_words: List[str]) -> List[str]:
     anagram_lst = []
-    for x in lst_of_words:
-        if Counter(word) == Counter(x):
-            anagram_lst.append(x)
+    for w in lst_of_words:
+        if Counter(word) == Counter(w):
+            anagram_lst.append(w)
     return anagram_lst
+
+
+def anagrams2(word: str, lst_of_words: List[str]) -> List[str]:
+    counts = Counter(word)
+    return [w for w in lst_of_words if Counter(w) == counts]
 
 
 if __name__ == '__main__':
     lst_word = ['tama', 'tratata', 'atma', 'atam', 'mama', 'maat', 'taam', 'gol']
+
     print(anagrams('mata', lst_word))
+
+    print(anagrams2('mata', lst_word))
