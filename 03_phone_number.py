@@ -13,7 +13,8 @@ from typing import List
 
 
 def create_phone_number(n: List[int]) -> str:
-    return fr"(+{n[0:2]}) {n[2:5]}-{n[5:8]}-{n[8:11]}"
+    n = [str(f) for f in n]
+    return fr"(+{''.join(n[0:2])}) {''.join(n[2:5])}-{''.join(n[5:8])}-{''.join(n[8:11])}"
 
 
 if __name__ == '__main__':
