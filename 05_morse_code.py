@@ -37,3 +37,36 @@ MORSE_CODE = {'.-': 'A', '-...': 'B', '-.-.': 'C', '-..': 'D',
               '---...': ':', '-.-.-.': ';', '-...-': '=', '.-.-.': '+', '-....-': '-', '..--.-': '_',
               '.-..-.': '"', '...-..-': '$', '.--.-.': '@', '...---...': 'SOS'}
 
+
+def decode_morse(morse_code: str) -> str:
+    encode_words_list = morse_code.split('   ')
+    words_list = []
+    for encode_word in encode_words_list:
+        list_signs = encode_word.split(' ')
+        word = ''
+        for sign in list_signs:
+            word += MORSE_CODE.get(sign, '')
+        words_list.append(word)
+
+    return ' '.join(words_list)
+
+
+def decode_morse2(morse_sequence: str)-> str:
+    words = []
+    for morse_word in morse_sequence.split('   '):
+        word = ''.join(MORSE_CODE.get(morse_char, '') for morse_char in morse_word.split(' '))
+        if word:
+            words.append(word)
+    return ' '.join(words)
+
+
+if __name__ == '__main__':
+    morse_code1 = '.... . -.--   .--- ..- -.. .'  # => 'HEY JUDE'
+    morse_code2 = ' . '  # => 'E'
+    morse_code3 = '...   ---   ...'  # => 'S O S'
+    print(decode_morse(morse_code1))
+    print(decode_morse(morse_code2))
+    print(decode_morse(morse_code3))
+    print(decode_morse2(morse_code1))
+    print(decode_morse2(morse_code2))
+    print(decode_morse2(morse_code3))
