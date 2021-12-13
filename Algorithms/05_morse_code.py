@@ -46,7 +46,8 @@ def decode_morse(morse_code: str) -> str:
         word = ''
         for sign in list_signs:
             word += MORSE_CODE.get(sign, '')
-        words_list.append(word)
+        if word:
+            words_list.append(word)
 
     return ' '.join(words_list)
 
