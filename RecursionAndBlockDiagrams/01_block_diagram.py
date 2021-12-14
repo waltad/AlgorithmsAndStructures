@@ -21,6 +21,7 @@ if result != -1:
     print("Element is present at index {}".format(result))
 else:
     print("Element is not present in array") """
+
 from typing import List
 
 
@@ -43,6 +44,3 @@ if __name__ == '__main__':
     test_lst = [2, 3, 4, 10, 40]
     x = 10
     print(binary_search_iter(test_lst, x))
-
-
-

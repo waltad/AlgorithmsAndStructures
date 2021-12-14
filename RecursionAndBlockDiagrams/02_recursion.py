@@ -18,3 +18,26 @@ n! = n x (n−1)!
 n! = n x (n−1) x (n-2)!
 Jeżeli liczba jest mniejsza od 2 zwróć 1. W przeciwnym wpadku zwróć liczba razy silnia(liczba-1)"""
 
+from typing import List
+
+
+def binary_search_rec(lst: List[int], key: int, start: int = 0, end: int = None):
+    if end == None:
+        end = len(lst) - 1
+
+    if end >= start:
+        mid = int(start + (end - start) / 2)
+        if lst[mid] == key:
+            return mid
+        elif lst[mid] > key:
+            return binary_search_rec(lst, key, start, mid -1)
+        else:
+            return binary_search_rec(lst, key, mid + 1,  end)
+    else:
+        return -1
+
+
+if __name__ == '__main__':
+    test_lst = [2, 3, 4, 10, 40]
+    x = 4
+    print(binary_search_rec(test_lst, x))
