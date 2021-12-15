@@ -12,12 +12,14 @@ iteracyjnie, jak i takie oparte na rekurencji."""
 
 def factorial_iter(n: int):
     result = 1
-    if n > 1:
+    if n in (0, 1):
+        return 1
+    elif n > 1:
         for i in range(1, n + 1):
             result = result * i
-        return result
     else:
-        return 1
+        raise ValueError('Number should be greater than 0')
+    return result
 
 
 if __name__ == '__main__':
