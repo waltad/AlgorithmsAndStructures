@@ -24,7 +24,7 @@ def factorial_iter(n: int) -> int:
 
 def factorial_rec(n: int) -> int:
     if n > 1:
-        return n * factorial_rec(n - 1)
+        result = n * factorial_rec(n - 1)
     elif n in (0, 1):
         return 1
     else:
