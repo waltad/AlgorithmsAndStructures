@@ -10,7 +10,7 @@ Przedstaw algorytm obliczania silni z podanej liczby w postaci schematu blokoweg
 iteracyjnie, jak i takie oparte na rekurencji."""
 
 
-def factorial_iter(n: int):
+def factorial_iter(n: int) -> int:
     result = 1
     if n in (0, 1):
         return 1
@@ -22,6 +22,17 @@ def factorial_iter(n: int):
     return result
 
 
+def factorial_rec(n: int) -> int:
+    if n > 1:
+        return n * factorial_rec(n - 1)
+    elif n in (0, 1):
+        return 1
+    else:
+        raise ValueError('Number should be greater than 0')
+    return result
+
+
 if __name__ == '__main__':
     x = 5
     print(factorial_iter(x))
+    print(factorial_rec(x))
