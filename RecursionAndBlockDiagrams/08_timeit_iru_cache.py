@@ -12,6 +12,30 @@ Nie są to oczywiście jedyne "sztuczki", które mogą sprawdzić, że Python wc
 zostały opisane w poniższym artykule, przy okazji porównania języka Python z Julią:
 https://towardsdatascience.com/how-to-make-python-faster-than-julia-b2c621130ae2 """
 from timeit import timeit
+from functools import lru_cache
+
+
+@lru_cache(32)
+def fibonacci_number_rec_cache(n: int) -> int:
+    if n < 2:
+        return 0
+    elif n < 3:
+        return 1
+    else:
+        return fibonacci_number_rec_cache(n - 2) + fibonacci_number_rec_cache(n - 1)
+
+
+@lru_cache(32)
+def fibonacci_number_iter_cache(n: int) -> int:
+    first, second = 0, 1
+    if n > 1:
+        for i in range(3, n + 1):
+            first, second = second, first + second
+    elif n == 1:
+        return first
+    else:
+        raise ValueError('Number should be greater than 0')
+    return second
 
 
 if __name__ == '__main__':
@@ -20,3 +44,8 @@ if __name__ == '__main__':
                  setup='from fibonacci_number_rec import fibonacci_number_rec; from __main__ import n', number=10))
     print(timeit("fibonacci_number_iter(n)",
                  setup='from fibonacci_number_iter import fibonacci_number_iter; from __main__ import n', number=10))
+
+    print(timeit("fibonacci_number_rec_cache(n)",
+                 setup='from __main__ import fibonacci_number_rec_cache, n', number=10))
+    print(timeit("fibonacci_number_iter_cache(n)",
+                 setup='from __main__ import fibonacci_number_iter_cache, n', number=10))
