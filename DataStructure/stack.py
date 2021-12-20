@@ -104,7 +104,7 @@ class BooksStack:
         self.books.append(title)
 
     def get_book(self):
-        pass
+        self.books.pop()
 
     def all_books(self) -> List[str]:
         return self.books
@@ -118,3 +118,4 @@ if __name__ == '__main__':
     my_books.add_new_book("Kotki")
 
     print(my_books.all_books())
+
