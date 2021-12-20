@@ -18,21 +18,19 @@ from functools import lru_cache
 @lru_cache(32)
 def fibonacci_number_rec_cache(n: int) -> int:
     if n < 2:
-        return 0
-    elif n < 3:
-        return 1
+        return n
     else:
-        return fibonacci_number_rec_cache(n - 2) + fibonacci_number_rec_cache(n - 1)
+        return fibonacci_number_rec_cache(n - 1) + fibonacci_number_rec_cache(n - 2)
 
 
 @lru_cache(32)
 def fibonacci_number_iter_cache(n: int) -> int:
     first, second = 0, 1
     if n > 1:
-        for i in range(3, n + 1):
+        for i in range(2, n + 1):
             first, second = second, first + second
-    elif n == 1:
-        return first
+    elif n >= 0:
+        return n
     else:
         raise ValueError('Number should be greater than 0')
     return second
