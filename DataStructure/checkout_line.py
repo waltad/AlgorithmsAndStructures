@@ -22,12 +22,36 @@ cr.process()
 cr.process()
 cr.process()
 """
+from DataStructure.gueue_fifo import FifoList
 from line import Client, Woman, Man, Child
 
 
 class CashRegister:
+    def __init__(self):
+        self.queue = FifoList()
+
     def add_client(self, client: Client):
-        pass
+        self.queue.append(client)
+        print(f"{client} dołączył do koleji")
 
     def process(self) -> Client:
-        pass
+        client = self.queue.pop()
+        print(f"Obsługuję {client}")
+
+    # def all_clients(self):
+    #     return self.queue
+
+
+if __name__ == '__main__':
+    client1 = Woman("Ania", "Cebula")
+    client2 = Man("John", "Smith")
+    client3 = Child("Krzyś", "Nowak")
+
+    cr = CashRegister()
+    cr.add_client(client1)
+    cr.add_client(client2)
+    cr.add_client(client3)
+
+    cr.process()
+    cr.process()
+    cr.process()
