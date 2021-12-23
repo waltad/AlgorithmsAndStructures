@@ -88,26 +88,51 @@ stack_name: Mój stos książek
  books: Gepardy Słonie Konie
 3
 """
-from typing import List
+from typing import List, Union
 
 
 class BooksStack:
-    def __init__(self, stack_name: str, category: str):
+    def __init__(self, stack_name: str, category: Union[None, str] = None):
         self.stack_name = stack_name
         self.category = category
         self.books: List[str] = []
 
-    def __str__(self):
-        return f"Stack: {self.stack_name} with category of books: {self.category}"
-
     def add_new_book(self, title: str):
         self.books.append(title)
 
-    def get_book(self):
-        self.books.pop()
+    def get_book(self) -> str:
+        return self.books.pop()
 
     def all_books(self) -> List[str]:
         return self.books
+
+    #  comparision
+    def __add__(self, second_stack: 'BooksStack'):
+        new_stack = BooksStack(stack_name=self.stack_name, category=self.category)
+        new_stack.books = self.books + second_stack.books
+        return new_stack
+
+    def __gt__(self, second_stack: 'BooksStack') -> bool:
+        return len(self.books) > len(second_stack.books)
+
+    def __lt__(self, second_stack: 'BooksStack') -> bool:
+        return len(self.books) < len(second_stack.books)
+
+    def __ge__(self, second_stack: 'BooksStack') -> bool:
+        return len(self.books) >= len(second_stack.books)
+
+    def __le__(self, second_stack: 'BooksStack') -> bool:
+        return len(self.books) <= len(second_stack.books)
+
+    def __str__(self) -> str:
+        return f"Stack: {self.stack_name} with category of books: {self.category}"
+
+    def __repr__(self) -> str:
+        books = ' '.join(self.books)
+        return f"stack_name: {self.stack_name}\n category: {self.category}\n books: {books}"
+
+    def __len__(self) -> int:
+        return len(self.books)
 
 
 if __name__ == '__main__':
@@ -118,4 +143,20 @@ if __name__ == '__main__':
     my_books.add_new_book("Kotki")
 
     print(my_books.all_books())
+    print(my_books.get_book())
+    print(my_books.all_books())
 
+    her_books = BooksStack("Jej stos ksiażek", "Przyrodnicze")
+    her_books.add_new_book("Konie")
+    print(her_books.all_books())
+
+    my_books = my_books + her_books
+    print(my_books.all_books())
+
+    print(my_books > her_books)
+    print(my_books <= her_books)
+
+    print(my_books)
+    print(repr(my_books))
+
+    print(len(my_books))
