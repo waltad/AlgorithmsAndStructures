@@ -35,4 +35,4 @@ class Man(Client):
 
 class Child(Client):
     def __str__(self) -> str:
-        return f"Mister {self.first_name} {self.last_name}"
+        return f"{self.first_name} {self.last_name}"
