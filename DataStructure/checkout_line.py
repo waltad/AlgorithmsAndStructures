@@ -22,8 +22,8 @@ cr.process()
 cr.process()
 cr.process()
 """
-from DataStructure.gueue_fifo import FifoList
-from line import Client, Woman, Man, Child
+from DataStructure.queue_fifo import FifoList
+from DataStructure.line import Client, Woman, Man, Child
 
 
 class CashRegister:
@@ -39,7 +39,9 @@ class CashRegister:
         print(f"Obsługuję {client}")
 
     # def all_clients(self):
-    #     return self.queue
+    #     for client in self.queue:
+    #         print(client, end=', ')
+    #     print()
 
 
 if __name__ == '__main__':
@@ -51,6 +53,8 @@ if __name__ == '__main__':
     cr.add_client(client1)
     cr.add_client(client2)
     cr.add_client(client3)
+
+    # cr.all_clients()
 
     cr.process()
     cr.process()

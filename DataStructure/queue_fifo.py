@@ -23,10 +23,23 @@ from typing import List
 
 class FifoList:
     def __init__(self):
-        self.list: List = []
+        self.data: List = []
 
     def append(self, data):
-        self.list.append(data)
+        self.data.append(data)
 
     def pop(self):
-        self.list.pop(0)
+        return self.data.pop(0)
+
+
+if __name__ == '__main__':
+    new_list = FifoList()
+    new_list.append('Luck')
+    new_list.append('Batman')
+    new_list.append('Spider-man')
+
+    print(new_list.data)
+
+    print(new_list.pop())
+    print(new_list.pop())
+    print(new_list.pop())
