@@ -23,7 +23,7 @@ class FasterCashRegister(CashRegister):
 
     def __init__(self):
         super().__init__()
-        self.queue = deque
+        self.queue = deque()
 
     def process(self):
         client = self.queue.popleft()
@@ -35,11 +35,11 @@ if __name__ == '__main__':
     client2 = Man("John", "Smith")
     client3 = Child("Krzyś", "Nowak")
 
-    cr = CashRegister()
-    cr.add_client(client1)
-    cr.add_client(client2)
-    cr.add_client(client3)
+    fcr = FasterCashRegister()
+    fcr.add_client(client1)
+    fcr.add_client(client2)
+    fcr.add_client(client3)
 
-    cr.process()
-    cr.process()
-    cr.process()
+    fcr.process()
+    fcr.process()
+    fcr.process()
