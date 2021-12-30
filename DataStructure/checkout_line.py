@@ -34,7 +34,7 @@ class CashRegister:
         self.queue.append(client)
         print(f"{client} dołączył do koleji")
 
-    def process(self) -> Client:
+    def process(self):
         client = self.queue.pop()
         print(f"Obsługuję {client}")
 
