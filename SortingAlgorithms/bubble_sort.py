@@ -13,7 +13,7 @@ from typing import List
 def bubble_sort(lst: List[int]) -> List[int]:
     n = len(lst)
     while n > 1:
-        for i in range(0, n-1):
+        for i in range(n-1):
             if lst[i] > lst[i + 1]:
                 lst[i], lst[i + 1] = lst[i + 1], lst[i]
         n -= 1
