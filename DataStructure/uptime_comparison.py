@@ -1,6 +1,5 @@
 """Zadanie 2.5 Porównaj czas działania¶
 Porównaj szybkość działania obu podejść."""
-from datetime import timedelta
 from time import time
 from timeit import timeit
 from DataStructure.line import Woman, Man, Child
@@ -22,11 +21,6 @@ if __name__ == '__main__':
     fcr.add_client(client2)
     fcr.add_client(client3)
 
-    print(timeit('cr.process', setup='from DataStructure.line import Woman, Man, Child;'
-                                     ' from checkout_line import CashRegister; from __main__ import cr'))
-    print(timeit('fcr.process', setup='from DataStructure.line import Woman, Man, Child;'
-                                     ' from checkout_line_fast import FasterCashRegister; from __main__ import fcr'))
-
     start = time()
 
     cr = CashRegister()
@@ -47,3 +41,8 @@ if __name__ == '__main__':
 
     print(duration)
     print(duration2)
+
+    print(timeit('cr.process', setup='from DataStructure.line import Woman, Man, Child;'
+                                     ' from checkout_line import CashRegister; from __main__ import cr'))
+    print(timeit('fcr.process', setup='from DataStructure.line import Woman, Man, Child;'
+                                      ' from checkout_line_fast import FasterCashRegister; from __main__ import fcr'))
