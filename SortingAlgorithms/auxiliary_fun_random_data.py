@@ -17,10 +17,10 @@ from typing import List
 
 
 def get_random_lists(lengths_of_lists: List[int]) -> List[List[int]]:
-    lengths_lists = []
+    random_lists = []
     for length in lengths_of_lists:
-        lengths_lists.append([randint(0, 100) for _ in range(length)])
-    return lengths_lists
+        random_lists.append([randint(0, 100) for _ in range(length)])
+    return random_lists
 
 
 if __name__ == '__main__':
